@@ -38,6 +38,7 @@ class LivroController:
 
     def excluir_livro(self):
         try:
+            listar_livros(self.model.listar_livros())
             idlivro = id_livro()
             if idlivro is None:
                 return
