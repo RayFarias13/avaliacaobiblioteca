@@ -1,10 +1,9 @@
-from model.livro_model import Livromodel
-from view.livro_view import *
-
+from model.livro_model import *
+from view.view_livro import *
 
 class LivroController:
     def __init__(self):
-        self.model = Livromodel()
+        self.model = LivroModel()
 
 
     def cadastrar_livro(self):
@@ -21,16 +20,16 @@ class LivroController:
     def listar_livros(self):
         try:
             livros = self.model.listar_livros()
-            exibir_livros(livros)
+            listar_livros(livros)
         except Exception as e:
             mensagem(f"Erro ao listar livros: {e}")
 
     def atualizar_livro(self):
         try:
-            idlivro = solicitar_id_livro("atualizar")
+            idlivro = id_livro()
             if idlivro is None:
                 return
-            titulo, ano_publicacao, id_autor = atualizar_dados_livro()
+            titulo, ano_publicacao, id_autor = cadastrar_dados_livro()
             self.model.atualizar_livro(idlivro, titulo, ano_publicacao, id_autor)
             mensagem("Livro atualizado com sucesso!")
         except Exception as e:
@@ -39,7 +38,7 @@ class LivroController:
 
     def excluir_livro(self):
         try:
-            idlivro = solicitar_id_livro("excluir")
+            idlivro = id_livro()
             if idlivro is None:
                 return
             self.model.excluir_livro(idlivro)

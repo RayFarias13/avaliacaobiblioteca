@@ -10,25 +10,27 @@ def menu_livro():
     return  input("Escolha uma opção: ")
 
 def cadastrar_dados_livro():
-    titulo = input("Título do Livro: ")
+    titulo = input("\nTítulo do Livro: ")
     ano_publicacao = input("Ano de Publicação: ")
     autor_id = input("ID do Autor: ")
     return titulo, ano_publicacao, autor_id 
 
 def id_livro():
     try:
-        return int(input("Informe o ID do livro"))
+        return int(input("\nInforme o ID do livro: "))
     except ValueError:
         print("ID inválido. Por favor, insira um número inteiro.")
         return None
 
 def listar_livros(livros):
-    print("\n--- Lista de Livros ---")
+    print("\n---- Lista de Livros ----")
     if not livros:
         print("Nenhum livro cadastrado.")
         return
     for livro in livros:
-        print(f"ID: {livro[0]}, Título: {livro[1]}, Ano de Publicação: {livro[2]}, ID do Autor: {livro[3]}")
+        print(f"ID: {livro[0]}, Título: {livro[1]}, Ano de Publicação: {livro[2]}, Autor: {livro[5]}")
+    print("--------------------------")
+
 
 def mensagem (texto):
     print(texto)

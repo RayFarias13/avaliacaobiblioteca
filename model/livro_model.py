@@ -19,10 +19,9 @@ class LivroModel:
     def cadastrar_livro(self,titulo,ano_publicacao,autor_id):
         try:
             cursor = self.conexao.cursor()
-            cursor.execute("INSERT INTO livros (titulo, ano_publicacao, autor_id) VALUES (%s, %s, %s)",(titulo, ano_publicacao, autor_id),)
+            cursor.execute("INSERT INTO livro (titulo, ano_publicacao, id_autor) VALUES (%s, %s, %s)",(titulo, ano_publicacao, autor_id),)
             self.conexao.commit()
             cursor.close()
-            print("Livro adicionado com sucesso!")
 
         except Exception as e:
             print("Erro ao adicionar livro:", e)
@@ -31,7 +30,7 @@ class LivroModel:
     def listar_livros(self):
         try:
             cursor = self.conexao.cursor()
-            cursor.execute("SELECT * FROM livros")
+            cursor.execute("SELECT * FROM livro INNER JOIN autor ON livro.id_autor = autor.id_autor")
             livros = cursor.fetchall()
             cursor.close()
             return livros
@@ -43,10 +42,9 @@ class LivroModel:
     def atualizar_livro(self, livro_id, titulo, ano_publicacao, autor_id):
         try:
             cursor = self.conexao.cursor()
-            cursor.execute("UPDATE livros SET titulo = %s, ano_publicacao = %s, autor_id = %s WHERE id = %s", (titulo, ano_publicacao, autor_id, livro_id),)
+            cursor.execute("UPDATE livro SET titulo = %s, ano_publicacao = %s, id_autor = %s WHERE id_livro = %s", (titulo, ano_publicacao, autor_id, livro_id),)
             self.conexao.commit()
             cursor.close()
-            print("Livro atualizado com sucesso!")
 
         except Exception as e:
             print("Erro ao atualizar livro:", e)
@@ -55,10 +53,9 @@ class LivroModel:
     def excluir_livro(self, livro_id):
         try:
             cursor = self.conexao.cursor()
-            cursor.execute("DELETE FROM livros WHERE id = %s", (livro_id,),)
+            cursor.execute("DELETE FROM livro WHERE id_livro = %s", (livro_id,),)
             self.conexao.commit()
             cursor.close()
-            print("Livro excluído com sucesso!")
 
         except Exception as e:
             print("Erro ao excluir livro:", e)
