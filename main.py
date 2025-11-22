@@ -1,4 +1,6 @@
 from controller.livro_controller import LivroController
+from controller.autor_controller import AutorController
+from view.view_autor import menu_autor
 from view.view_livro import menu_livro
 
 
@@ -13,11 +15,7 @@ def main():
             opcao = input("Escolha uma opção: ")
 
             if opcao == "1":
-                pass
-                #submenu_autor()
-                #Artur
-
-
+               submenu_autor()
             elif opcao == "2":
                 submenu_livro()   
             elif opcao == "0":
@@ -49,6 +47,23 @@ def submenu_livro():
         elif opcaolivro == "6":
             print("Saindo do programa...")
             exit()
+        else:
+            print("Opção inválida. Tente novamente.")
+
+def submenu_autor():
+    res_autor = AutorController()   
+    while True:
+        opcaoautor = menu_autor()
+        if opcaoautor == "1":
+            res_autor.cadastrar_autor()
+        elif opcaoautor == "2":
+            res_autor.listar_autores()
+        elif opcaoautor == "3":
+            res_autor.atualizar_autor()
+        elif opcaoautor == "4":
+            res_autor.excluir_autor()
+        elif opcaoautor == "5":
+            return
         else:
             print("Opção inválida. Tente novamente.")
 
