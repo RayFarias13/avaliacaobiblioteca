@@ -1,4 +1,6 @@
 from model.livro_model import *
+from model.autor_model import *
+from controller.autor_controller import *
 from view.view_livro import *
 
 class LivroController:
@@ -8,6 +10,8 @@ class LivroController:
 
     def cadastrar_livro(self):
         try:
+            listar_autores(AutorModel().listar_autores())
+            
             titulo, ano_publicacao, id_autor = cadastrar_dados_livro()
             if not titulo or not ano_publicacao or not id_autor:
                 mensagem("Todos os campos são obrigatórios.")
@@ -26,6 +30,7 @@ class LivroController:
 
     def atualizar_livro(self):
         try:
+            listar_livros(self.model.listar_livros())
             idlivro = id_livro()
             if idlivro is None:
                 return

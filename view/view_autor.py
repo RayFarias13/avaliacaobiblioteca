@@ -26,10 +26,8 @@ def listar_autores(autores):
         print("Nenhum autor cadastrado.")
     else:
         for autor in autores:
-            # Aqui estou assumindo que 'autor' é um Objeto (vido do seu model.py).
-            # Se sua dupla estiver usando listas/tuplas diretas do banco, 
-            # altere para autor[0], autor[1], etc.
-            print(f"ID: {autor.id}, Nome: {autor.nome}, Nacionalidade: {autor.nacionalidade}")
+            
+            print(f"ID: {autor[0]}, Nome: {autor[1]}, Nacionalidade: {autor[2]}")
     print("--------------------------")
 
 def mensagem(texto):
