@@ -5,7 +5,8 @@ def menu_autor():
     print("3 - Atualizar Autor")
     print("4 - Excluir Autor")
     print("5 - Voltar ao Menu Principal")
-    
+    print("0 - Sair")
+
     return input("Escolha uma opção: ")
 
 def cadastrar_dados_autor():

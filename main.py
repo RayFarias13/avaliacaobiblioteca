@@ -44,7 +44,7 @@ def submenu_livro():
             res_livro.excluir_livro()
         elif opcaolivro == "5":
             return
-        elif opcaolivro == "6":
+        elif opcaolivro == "0":
             print("Saindo do programa...")
             exit()
         else:
@@ -64,6 +64,9 @@ def submenu_autor():
             res_autor.excluir_autor()
         elif opcaoautor == "5":
             return
+        elif opcaoautor == "0":
+            print("Saindo do programa...")
+            exit()
         else:
             print("Opção inválida. Tente novamente.")
 

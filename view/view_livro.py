@@ -5,7 +5,7 @@ def menu_livro():
     print("3 - Atualizar Livro")
     print("4 - Excluir Livro")
     print("5 - Voltar ao Menu Principal")
-    print("6 - Sair")
+    print("0 - Sair")
 
     return  input("Escolha uma opção: ")
 
