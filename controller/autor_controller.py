@@ -26,26 +26,33 @@ class AutorController:
 
     def atualizar_autor(self):
         try:
-            idautor = id_autor()
-            if idautor is None:
-                return
+            if listar_autores(self.model.listar_autores()) is []:
+                pass
+            else:
+                listar_autores(self.model.listar_autores())
+                idautor = id_autor()
+                if idautor is None:
+                    return
 
-            nome, nacionalidade = cadastrar_dados_autor()
-            
-            self.model.atualizar_autor(idautor, nome, nacionalidade)
-            mensagem("Autor atualizado com sucesso!")
+                nome, nacionalidade = cadastrar_dados_autor()
+                
+                self.model.atualizar_autor(idautor, nome, nacionalidade)
+                mensagem("Autor atualizado com sucesso!")
         except Exception as e:
             mensagem(f"Erro ao atualizar autor: {e}")
 
     def excluir_autor(self):
         try:
-            listar_autores(self.model.listar_autores())
+            if listar_autores(self.model.listar_autores()) is []:
+                pass
+            else:
+                listar_autores(self.model.listar_autores())
             
-            idautor = id_autor()
-            if idautor is None:
-                return
-            
-            self.model.excluir_autor(idautor)
-            mensagem("Autor excluído com sucesso!")
+                idautor = id_autor()
+                if idautor is None:
+                    return
+                
+                self.model.excluir_autor(idautor)
+                mensagem("Autor excluído com sucesso!")
         except Exception as e:
             mensagem(f"Erro ao excluir autor: {e}")

@@ -30,24 +30,32 @@ class LivroController:
 
     def atualizar_livro(self):
         try:
-            listar_livros(self.model.listar_livros())
-            idlivro = id_livro()
-            if idlivro is None:
-                return
-            titulo, ano_publicacao, id_autor = cadastrar_dados_livro()
-            self.model.atualizar_livro(idlivro, titulo, ano_publicacao, id_autor)
-            mensagem("Livro atualizado com sucesso!")
+            if listar_livros(self.model.listar_livros()) is []:
+                pass
+            else:
+                listar_autores(AutorModel().listar_autores())
+
+                listar_livros(self.model.listar_livros())
+                idlivro = id_livro()
+                if idlivro is None:
+                    return
+                titulo, ano_publicacao, id_autor = cadastrar_dados_livro()
+                self.model.atualizar_livro(idlivro, titulo, ano_publicacao, id_autor)
+                mensagem("Livro atualizado com sucesso!")
         except Exception as e:
             mensagem(f"Erro ao atualizar livro: {e}")
 
 
     def excluir_livro(self):
         try:
-            listar_livros(self.model.listar_livros())
-            idlivro = id_livro()
-            if idlivro is None:
-                return
-            self.model.excluir_livro(idlivro)
-            mensagem("Livro excluído com sucesso!")
+            if listar_livros(self.model.listar_livros()) is []:
+                pass
+            else:
+                listar_livros(self.model.listar_livros())
+                idlivro = id_livro()
+                if idlivro is None:
+                    return
+                self.model.excluir_livro(idlivro)
+                mensagem("Livro excluído com sucesso!")
         except Exception as e:
             mensagem(f"Erro ao excluir livro: {e}")

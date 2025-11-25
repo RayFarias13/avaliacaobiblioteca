@@ -30,10 +30,15 @@ class LivroModel:
     def listar_livros(self):
         try:
             cursor = self.conexao.cursor()
-            cursor.execute("SELECT * FROM livro INNER JOIN autor ON livro.id_autor = autor.id_autor")
+            cursor.execute("SELECT * FROM livro INNER JOIN autor ON livro.id_autor = autor.id_autor ")
             livros = cursor.fetchall()
             cursor.close()
-            return livros
+            if livros is []:
+                
+                pass
+            
+            else:
+                return livros
         
         except Exception as e:
             print("Erro ao listar livro(s):", e)
